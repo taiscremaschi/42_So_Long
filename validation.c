@@ -6,7 +6,7 @@
 /*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 11:47:01 by ricardo           #+#    #+#             */
-/*   Updated: 2023/09/28 13:40:33 by ricardo          ###   ########.fr       */
+/*   Updated: 2023/09/29 15:10:50 by ricardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ void map_caracteres(t_main *main)
                     trueP++;
                     main->player.x = j;
                     main->player.y = i;
+                    
                 }
 
             else if(main->map[i][j] == map[2])

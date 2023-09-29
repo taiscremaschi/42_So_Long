@@ -6,7 +6,7 @@
 /*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 11:58:57 by ricardo           #+#    #+#             */
-/*   Updated: 2023/09/29 13:58:10 by ricardo          ###   ########.fr       */
+/*   Updated: 2023/09/29 15:14:35 by ricardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	main(int ac, char **av)
   
     main.player.x = 0;
     main.player.y = 0;
+	main.moves_counter = 0;
     if(ac != 2)
     {
         exit (write(2, "Error\n", 6));
@@ -60,7 +61,6 @@ int	main(int ac, char **av)
     main.mlx = mlx_init();
 	main.win = mlx_new_window(main.mlx, ((main.large - 1) * 64), main.altura * 64, "so long");
     image_inicialize(&main);
-	//mlx_key_hook(main.win,key_hook, &main.player);
 	mlx_loop_hook(main.mlx, function_image, &main);
 	mlx_key_hook(main.win,key_hook, &main);
     mlx_hook(main.win, 2, 1L<<0, read_esc, &main);

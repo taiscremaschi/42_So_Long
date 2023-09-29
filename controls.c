@@ -6,7 +6,7 @@
 /*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 12:11:11 by ricardo           #+#    #+#             */
-/*   Updated: 2023/09/29 13:46:18 by ricardo          ###   ########.fr       */
+/*   Updated: 2023/09/29 15:14:15 by ricardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void verification_moves(t_main *m, int x, int y)
         exit(ft_putstr_fd("YOU ARE A WINNER!", 1));
     m->player.y = y;
     m->player.x = x;
+    m->moves_counter++;
+    printf("count moves is %d\n", m->moves_counter);
 }
 
 int key_hook(int keycode, t_main *m)

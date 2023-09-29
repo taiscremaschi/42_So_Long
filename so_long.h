@@ -6,7 +6,7 @@
 /*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 14:15:22 by tbolzan-          #+#    #+#             */
-/*   Updated: 2023/09/29 12:40:19 by ricardo          ###   ########.fr       */
+/*   Updated: 2023/09/29 14:49:45 by ricardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct	s_main {
     int	    large;
     int     altura;
     void	*mlx;
+    int	    moves_counter;
     t_image	 image;
     t_player	player;
     t_picture	picture;
@@ -76,6 +77,7 @@ char **save_map(char **map, int fd);
 int key_hook(int keycode, t_main *main);
 int read_esc(int keycode, t_main *main);
 void verification_moves(t_main *m, int x, int y);
+void string_to_moves(t_main *m);
 
 ////////////// IMAGENS //////////////
 void    image_inicialize(t_main *main);
