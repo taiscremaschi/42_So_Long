@@ -6,7 +6,7 @@
 /*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 14:15:22 by tbolzan-          #+#    #+#             */
-/*   Updated: 2023/09/29 14:49:45 by ricardo          ###   ########.fr       */
+/*   Updated: 2023/10/01 01:15:42 by ricardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct	s_picture {
     void    *exit;
 }	t_picture;
 
+
 typedef struct	s_main {
 	
 	void	*win;
@@ -58,17 +59,18 @@ typedef struct	s_main {
     int	    moves_counter;
     t_image	 image;
     t_player	player;
-    t_picture	picture;
-    
+    t_picture	picture;    
 }				t_main;
 
 ///////////// VALIDATION //////////
+
 void map_paredes(t_main *main);
 void map_retagulo(t_main *main);
 void map_caracteres(t_main *main);
 void map_validate(t_main *main);
 void check_map(char **av, t_main *main);
 ////////// MAPS ////////////
+
 int map_caracteres_valids(char *s);
 char **save_map(char **map, int fd);
 
@@ -87,5 +89,9 @@ int function_image(t_main *main);
 void	my_mlx_pixel_put(t_image *image, int x, int y, int color);
 void create_square(t_main *main, int x, int y, int size, int color);
 int	close_(t_main *main);
+
+////////// ALGORITMO  /////////////
+int algoritmo(int x, int y, char **map_copy, int col);
+char **copy_map(t_main *main);
 
 #endif

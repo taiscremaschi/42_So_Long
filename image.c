@@ -6,7 +6,7 @@
 /*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 16:26:38 by ricardo           #+#    #+#             */
-/*   Updated: 2023/09/29 15:12:46 by ricardo          ###   ########.fr       */
+/*   Updated: 2023/10/01 00:44:27 by ricardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,9 @@ int function_image(t_main *main)
 {
     int x;
     int y;
-    int c;
     
     x = 0;
-    y = 0;
-
-        
+    y = 0;        
     while(main->map[y] != NULL)
     {
         x = 0;
@@ -57,5 +54,6 @@ int function_image(t_main *main)
         y++;
     }
     mlx_put_image_to_window(main->mlx, main->win, main->picture.player, (main->player.x * 64), (main->player.y * 64));
- }
+    return (0);
+}
  

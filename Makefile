@@ -6,7 +6,7 @@
 #    By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/19 14:11:51 by tbolzan-          #+#    #+#              #
-#    Updated: 2023/09/28 13:02:58 by ricardo          ###   ########.fr        #
+#    Updated: 2023/10/01 00:40:00 by ricardo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ LIBMLX = ./minilibx-linux/libmlx_Linux.a ./minilibx-linux/libmlx.a
 
 CC = cc
 
-CFLAGS = #-Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra
 
 LFLAGS = -L $(LIBMLX) $(LIBFT)
 

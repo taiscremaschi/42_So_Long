@@ -6,7 +6,7 @@
 /*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 12:11:11 by ricardo           #+#    #+#             */
-/*   Updated: 2023/09/29 15:14:15 by ricardo          ###   ########.fr       */
+/*   Updated: 2023/09/30 19:55:43 by ricardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,3 +58,4 @@ int read_esc(int keycode, t_main *main)
 		close_(main);
 	return(0);	
 }
+

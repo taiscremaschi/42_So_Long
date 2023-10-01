@@ -6,7 +6,7 @@
 /*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 11:47:01 by ricardo           #+#    #+#             */
-/*   Updated: 2023/09/29 15:10:50 by ricardo          ###   ########.fr       */
+/*   Updated: 2023/10/01 01:22:25 by ricardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,10 @@ void check_map(char **av, t_main *main)
     map_validate(main);
     map_caracteres(main);
     map_paredes(main);
+    int x;
+    x = algoritmo(main->player.x, main->player.y, copy_map(main), main->player.col);
+    if(x == 1)
+        exit(ft_putstr_fd("caminho nao valido\n", 1));
     while(main->map[i] != NULL)
     {
         printf("%s", main->map[i++]);
