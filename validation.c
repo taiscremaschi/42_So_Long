@@ -6,7 +6,7 @@
 /*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 11:47:01 by ricardo           #+#    #+#             */
-/*   Updated: 2023/10/02 15:32:58 by ricardo          ###   ########.fr       */
+/*   Updated: 2023/10/02 17:01:31 by ricardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void map_paredes(t_main *main)
     i = 0;
     while(i < altura)
     {
-        printf("%d\n", main->map[i][largura]);
         if(main->map[i][largura] == '1')
             i++;
         else 
@@ -79,7 +78,6 @@ void map_retagulo(t_main *main)
             exit(ft_putstr_fd("O mapa não é retangulo\n", 1));
     }
     main->altura = alt;
-    printf("%d\n", alt);
 }
 
 void map_caracteres(t_main *main)
@@ -145,15 +143,11 @@ void map_validate(t_main *main)
 void check_map(char **av, t_main *main)
 {
     int fd;
-    int i;
 
-    i = 0;
-    
     if(ft_strncmp(ft_strchr(av[1], '.'), ".ber\0", 5) != 0)
         exit(write(2, "Error, wrong extension\n", 23));
 
     fd = open(av[1], O_RDONLY);
-
     if(fd <= 0)
         exit(ft_putstr_fd("Erro na abertura do FD\n", 1));
     main->map = save_map(NULL, fd);
@@ -161,27 +155,6 @@ void check_map(char **av, t_main *main)
     map_validate(main);
     map_caracteres(main);
     map_paredes(main);
-    int x;
-    char **copy_map2 = copy_map(main);
-    print_map(copy_map2);
-    print_map(main->map);
-    x = algoritmo(main->player.x, main->player.y, copy_map2, main->player.col);
-    int j = 0;
-    int t = 0;
-    while(copy_map2[j] != NULL)
-    {
-        t = 0;
-        while(copy_map2[j][t] != '\0')
-        {
-            printf("%c", copy_map2[j][t]);
-            t++;
-        }
-        j++;
-    }
-    if(x == 1)
+    if(algoritmo(main->player.x, main->player.y, copy_map(main), main->player.col) == 1)
         exit(ft_putstr_fd("caminho nao valido\n", 1));
-    while(main->map[i] != NULL)
-    {
-        printf("%s", main->map[i++]);
-    }
 }

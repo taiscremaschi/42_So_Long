@@ -6,7 +6,7 @@
 /*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 20:35:22 by ricardo           #+#    #+#             */
-/*   Updated: 2023/10/02 15:36:39 by ricardo          ###   ########.fr       */
+/*   Updated: 2023/10/02 21:10:09 by ricardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,50 +36,37 @@ char **copy_map(t_main *main)
     return c_map;
 }
 
+int  util_alg(int x, int y, char **map_copy, int col)
+{
+    if(map_copy[y][x] != '1' && map_copy[y][x] != 'z')
+    {
+        if(map_copy[y][x] == 'C')
+            col--;
+        return (algoritmo(x, y, map_copy, col));
+    }
+    return (1);
+}
+
 int algoritmo(int x, int y, char **map_copy, int col)
 { 
     static int exit;
     static int c;
-    printf("%d, %d\t%d, %c, %d\n", x, y, col, map_copy[y][x], exit);
+   // printf("%d, %d\t%d, %c, %d\n", x, y, col, map_copy[y][x], exit);
     if(col == 0)
         c = 1;
     if(map_copy[y][x] == 'E')
        exit = 1;
     if(c == 1 && exit == 1)
         return (0);
-    if(map_copy[y - 1][x] != '1' && map_copy[y - 1][x] != 'z')
-    {
-        if(map_copy[y - 1][x] == 'C')
-            col--;
-        map_copy[y][x] = 'z';
-        if(algoritmo(x, y - 1, map_copy, col) == 0)
-            return (0); 
-    }
-    if(map_copy[y + 1][x] != '1' && map_copy[y + 1][x] != 'z')
-    {
-        if(map_copy[y + 1][x] == 'C')
-            col--;
-        map_copy[y][x] = 'z';
-        if (algoritmo(x, y + 1, map_copy, col) == 0)
-            return (0);
-    }
-    if(map_copy[y][x + 1] != '1' && map_copy[y][x + 1] != 'z')
-    {
-        if(map_copy[y][x + 1] == 'C')
-            col--;
-        map_copy[y][x] = 'z';
-       if(algoritmo(x + 1, y, map_copy, col) == 0)
-            return (0);
-    }
-    if(map_copy[y][x - 1] != '1' && map_copy[y][x - 1] != 'z')
-    {
-        if(map_copy[y][x  - 1] == 'C')
-            col--;
-        map_copy[y][x] = 'z';
-        if (algoritmo(x - 1, y, map_copy, col) == 0)
-            return (0);
-    }
-
+    map_copy[y][x] = 'z';
+    if(util_alg(x, y - 1, map_copy, col) == 0)
+        return (0);    
+    if(util_alg(x, y + 1, map_copy, col) == 0)
+        return (0);
+    if(util_alg(x + 1, y, map_copy, col) == 0)
+        return (0);
+    if(util_alg(x - 1, y, map_copy, col) == 0)
+        return (0);
     return (1);
-    
 }
+
