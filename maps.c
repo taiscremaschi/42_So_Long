@@ -44,3 +44,13 @@ char **save_map(char **map, int fd)
     return (map);
 }
 
+void print_map(char **map)
+{
+    int j = 0;
+
+     while(map[j] != NULL)
+    {
+        printf("%s", map[j]);
+        j++;
+    }
+}

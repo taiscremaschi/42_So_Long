@@ -6,7 +6,7 @@
 /*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 14:15:22 by tbolzan-          #+#    #+#             */
-/*   Updated: 2023/10/01 01:15:42 by ricardo          ###   ########.fr       */
+/*   Updated: 2023/10/02 15:31:27 by ricardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void check_map(char **av, t_main *main);
 
 int map_caracteres_valids(char *s);
 char **save_map(char **map, int fd);
+void print_map(char  **map);
 
 
 ///////////// CONTROLS ////////////
