@@ -6,7 +6,7 @@
 /*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 11:58:57 by ricardo           #+#    #+#             */
-/*   Updated: 2023/10/02 23:31:49 by ricardo          ###   ########.fr       */
+/*   Updated: 2023/10/03 19:58:29 by ricardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,7 @@ int	main(int ac, char **av)
 	main.player.y = 0;
 	main.moves_counter = 0;
 	if (ac != 2)
-	{
 		exit(write(1, "Error\n", 6));
-	}
 	check_map(av, &main);
 	main.mlx = mlx_init();
 	main.win = mlx_new_window(main.mlx, ((main.large - 1) * 64), main.altura

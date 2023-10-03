@@ -6,7 +6,7 @@
 /*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 14:15:22 by tbolzan-          #+#    #+#             */
-/*   Updated: 2023/10/02 23:28:00 by ricardo          ###   ########.fr       */
+/*   Updated: 2023/10/03 19:11:59 by ricardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "libft/get_next_line_bonus.h"
 # include "libft/libft.h"
+# include "printf/ft_printf.h"
 # include "minilibx-linux/mlx.h"
 # include "minilibx-linux/mlx_int.h"
 # include <errno.h>
@@ -66,7 +67,7 @@ typedef struct s_main
 ///////////// VALIDATION //////////
 
 void			map_paredes(t_main *main);
-void			map_retagulo(t_main *main);
+void			map_rectangle(t_main *main);
 void	map_caracteres(t_main *main, int true_e, int true_p);
 void			map_validate(t_main *main);
 void			check_map(char **av, t_main *main);

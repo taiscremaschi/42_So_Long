@@ -6,7 +6,7 @@
 /*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 22:29:19 by ricardo           #+#    #+#             */
-/*   Updated: 2023/10/02 22:30:01 by ricardo          ###   ########.fr       */
+/*   Updated: 2023/10/03 19:33:55 by ricardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	map_caracteres_valids(char *s)
 			i = 0;
 		}
 		else if (i == 6)
-			exit(ft_putstr_fd("Erro! Caracter nao válido\n", 1));
+			return (0);
 		else if (s[count] != map[i])
 			i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 20:35:22 by ricardo           #+#    #+#             */
-/*   Updated: 2023/10/02 22:21:20 by ricardo          ###   ########.fr       */
+/*   Updated: 2023/10/03 20:04:32 by ricardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,15 @@ char	**copy_map(t_main *main)
 	int		y;
 
 	c_map = malloc(sizeof(char *) * (main->altura + 1));
+	if (!c_map)
+		return (NULL);
 	x = 0;
 	while (x < main->altura)
 	{
 		y = 0;
 		c_map[x] = malloc(sizeof(char) * (main->large + 1));
+		if (!c_map)
+			return (NULL);
 		while (main->map[x][y] != '\0')
 		{
 			c_map[x][y] = main->map[x][y];

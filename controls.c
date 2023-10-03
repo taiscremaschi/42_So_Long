@@ -6,7 +6,7 @@
 /*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 12:11:11 by ricardo           #+#    #+#             */
-/*   Updated: 2023/10/02 23:21:09 by ricardo          ###   ########.fr       */
+/*   Updated: 2023/10/03 20:04:01 by ricardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	verification_moves(t_main *m, int x, int y)
 	}
 	else if (m->map[y][x] == 'E' && m->player.col == 0)
 	{
-		ft_putstr_fd("YOU ARE A WINNER!", 1);
+		ft_putstr_fd("VOCÊ CHEGOU NO MÉXICO, DIVIRTA-SE!!!\n", 1);
 		end(m);
 	}
 	m->player.y = y;
@@ -48,8 +48,8 @@ int	key_hook(int keycode, t_main *m)
 		verification_moves(m, (x + 1), y);
 	else if (keycode == LEFT && m->map[y][x - 1] != '1')
 		verification_moves(m, (x - 1), y);
-    m->moves_counter++;
-	printf("count moves is %d\n", m->moves_counter);
+	m->moves_counter++;
+	ft_printf("count moves is %d\n", m->moves_counter);
 	return (0);
 }
 
