@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 11:58:57 by ricardo           #+#    #+#             */
-/*   Updated: 2023/10/03 19:58:29 by ricardo          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "so_long.h"
 
@@ -51,10 +40,10 @@ int	main(int ac, char **av)
 		exit(write(1, "Error\n", 6));
 	check_map(av, &main);
 	main.mlx = mlx_init();
-	main.win = mlx_new_window(main.mlx, ((main.large - 1) * 64), main.altura
+	main.win = mlx_new_window(main.mlx, ((main.larg) * 64), main.altura
 			* 64, "so long");
 	image_inicialize(&main);
-	mlx_loop_hook(main.mlx, function_image, &main);
+	mlx_loop_hook(main.mlx, render_image, &main);
 	mlx_key_hook(main.win, key_hook, &main);
 	mlx_hook(main.win, 2, 1L << 0, read_esc, &main);
 	mlx_hook(main.win, 33, 1L << 2, end, &main);

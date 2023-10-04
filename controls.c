@@ -1,14 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   controls.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/28 12:11:11 by ricardo           #+#    #+#             */
-/*   Updated: 2023/10/04 20:09:39 by ricardo          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+
 
 #include "so_long.h"
 
@@ -31,10 +21,10 @@ void	verification_moves(t_main *m, int x, int y)
 {
 	if (m->map[y][x] == 'C')
 	{
-		m->player.col--;
+		m->col--;
 		m->map[y][x] = '0';
 	}
-	else if (m->map[y][x] == 'E' && m->player.col == 0)
+	else if (m->map[y][x] == 'E' && m->col == 0)
 	{
 		ft_putstr_fd("YOU ARRIVED IN MÉXICO, DRINK TEQUILAS!!!\n", 1);
 		end(m);

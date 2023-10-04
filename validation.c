@@ -1,14 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   validation.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/28 11:47:01 by ricardo           #+#    #+#             */
-/*   Updated: 2023/10/04 20:20:23 by ricardo          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+
 
 #include "so_long.h"
 
@@ -20,7 +10,7 @@ void	map_paredes(t_main *main)
 
 	i = -1;
 	altura = main->altura - 1;
-	largura = main->large - 1;
+	largura = main->larg - 1;
 	while (main->map[0][++i] != '\n')
 	{
 		if ((main->map[0][i] != '1' && main->map[0][i] != '\n')
@@ -48,10 +38,10 @@ void	map_rectangle(t_main *main)
 
 	alt = 1;
 	i = 1;
-	main->large = ft_strlen_sl(main->map[0]);
+	main->larg = ft_strlen_sl(main->map[0]);
 	while (main->map[i] != NULL)
 	{
-		if (main->large == ft_strlen_sl(main->map[alt]))
+		if (main->larg == ft_strlen_sl(main->map[alt]))
 		{
 			alt++;
 			i++;
@@ -76,7 +66,7 @@ void	check_letters(t_main *main, int i, int j, int *true_p)
 		main->player.y = i;
 	}
 	else if (main->map[i][j] == 'C')
-		main->player.col++;
+		main->col++;
 }
 
 void	map_caracteres(t_main *main)
@@ -89,7 +79,7 @@ void	map_caracteres(t_main *main)
 	i = -1;
 	true_e = 0;
 	true_p = 0;
-	main->player.col = 0;
+	main->col = 0;
 	while (main->map[++i] != NULL)
 	{
 		j = -1;
@@ -100,7 +90,7 @@ void	map_caracteres(t_main *main)
 			check_letters(main, i, j, &true_p);
 		}
 	}
-	if (true_e != 1 || true_p != 1 || main->player.col < 1)
+	if (true_e != 1 || true_p != 1 || main->col < 1)
 	{
 		free_map(main->map);
 		exit(ft_putstr_fd("Erro no caracter\n", 1));

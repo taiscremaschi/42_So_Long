@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   algoritmo.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/30 20:35:22 by ricardo           #+#    #+#             */
-/*   Updated: 2023/10/04 20:14:11 by ricardo          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "so_long.h"
 
@@ -20,7 +9,7 @@ void	check_map_alg(t_main *main, char **copy_map_temp)
 		exit(ft_putstr_fd("erro", 1));
 	}
 	if (algoritmo(main->player.x, main->player.y, copy_map_temp,
-			main->player.col) == 1)
+			main->col) == 1)
 	{
 		free_map(main->map);
 		free_map(copy_map_temp);

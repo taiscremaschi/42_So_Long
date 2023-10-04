@@ -1,14 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   image.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/22 16:26:38 by ricardo           #+#    #+#             */
-/*   Updated: 2023/10/04 19:47:26 by ricardo          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+
 
 #include "so_long.h"
 
@@ -44,7 +34,7 @@ void	util_image(t_main *main, int x, int y)
 			(x * 64), (y * 64));
 }
 
-int	function_image(t_main *main)
+int	render_image(t_main *main)
 {
 	int	x;
 	int	y;
@@ -54,9 +44,7 @@ int	function_image(t_main *main)
 	{
 		x = -1;
 		while (main->map[y][++x] != '\0')
-		{
 			util_image(main, x, y);
-		}
 	}
 	mlx_put_image_to_window(main->mlx, main->win, main->picture.player,
 		(main->player.x * 64), (main->player.y * 64));
