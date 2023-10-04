@@ -6,7 +6,7 @@
 /*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 11:47:01 by ricardo           #+#    #+#             */
-/*   Updated: 2023/10/03 20:08:14 by ricardo          ###   ########.fr       */
+/*   Updated: 2023/10/04 20:20:23 by ricardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	map_paredes(t_main *main)
 
 	i = -1;
 	altura = main->altura - 1;
-	largura = main->large - 2;
-	while (main->map[0][++i] != '\0')
+	largura = main->large - 1;
+	while (main->map[0][++i] != '\n')
 	{
 		if ((main->map[0][i] != '1' && main->map[0][i] != '\n')
 			|| (main->map[altura][i] != '1' && main->map[altura][i] != '\n'))
@@ -48,10 +48,10 @@ void	map_rectangle(t_main *main)
 
 	alt = 1;
 	i = 1;
-	main->large = ft_strlen(main->map[0]);
+	main->large = ft_strlen_sl(main->map[0]);
 	while (main->map[i] != NULL)
 	{
-		if (main->large == ft_strlen(main->map[alt]))
+		if (main->large == ft_strlen_sl(main->map[alt]))
 		{
 			alt++;
 			i++;
@@ -67,12 +67,28 @@ void	map_rectangle(t_main *main)
 	main->altura = alt;
 }
 
-void	map_caracteres(t_main *main, int true_e, int true_p)
+void	check_letters(t_main *main, int i, int j, int *true_p)
+{
+	if (main->map[i][j] == 'P')
+	{
+		(*true_p)++;
+		main->player.x = j;
+		main->player.y = i;
+	}
+	else if (main->map[i][j] == 'C')
+		main->player.col++;
+}
+
+void	map_caracteres(t_main *main)
 {
 	int	i;
 	int	j;
+	int	true_e;
+	int	true_p;
 
 	i = -1;
+	true_e = 0;
+	true_p = 0;
 	main->player.col = 0;
 	while (main->map[++i] != NULL)
 	{
@@ -81,14 +97,7 @@ void	map_caracteres(t_main *main, int true_e, int true_p)
 		{
 			if (main->map[i][j] == 'E')
 				true_e++;
-			else if (main->map[i][j] == 'P')
-			{
-				true_p++;
-				main->player.x = j;
-				main->player.y = i;
-			}
-			else if (main->map[i][j] == 'C')
-				main->player.col++;
+			check_letters(main, i, j, &true_p);
 		}
 	}
 	if (true_e != 1 || true_p != 1 || main->player.col < 1)
@@ -113,36 +122,4 @@ void	map_validate(t_main *main)
 			exit(ft_putstr_fd("Erro nos caracteres\n", 1));
 		}
 	}
-}
-
-void	check_map(char **av, t_main *main)
-{
-	int		fd;
-	char	**copy_map_temp;
-
-	if (ft_strchr(av[1], '.') == NULL || ft_strncmp(ft_strchr(av[1], '.'),
-			".ber\0", 5) != 0)
-		exit(write(1, "Error, wrong extension\n", 23));
-	fd = open(av[1], O_RDONLY);
-	if (fd <= 0)
-		exit(ft_putstr_fd("Erro na abertura do FD\n", 1));
-	main->map = save_map(NULL, fd);
-	map_rectangle(main);
-	map_validate(main);
-	map_caracteres(main, 0, 0);
-	map_paredes(main);
-	copy_map_temp = copy_map(main);
-	if (copy_map_temp == NULL)
-	{
-		free_map(main->map);
-		exit(ft_putstr_fd("erro", 1));
-	}
-	if (algoritmo(main->player.x, main->player.y, copy_map_temp,
-			main->player.col) == 1)
-	{
-		free_map(main->map);
-		free_map(copy_map_temp);
-		exit(ft_putstr_fd("caminho nao valido\n", 1));
-	}
-	free_map(copy_map_temp);
 }

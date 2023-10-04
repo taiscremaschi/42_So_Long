@@ -6,11 +6,29 @@
 /*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 22:29:19 by ricardo           #+#    #+#             */
-/*   Updated: 2023/10/03 19:33:55 by ricardo          ###   ########.fr       */
+/*   Updated: 2023/10/04 20:14:59 by ricardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	check_map(char **av, t_main *main)
+{
+	int	fd;
+
+	if (ft_strchr(av[1], '.') == NULL || ft_strncmp(ft_strchr(av[1], '.'),
+			".ber\0", 5) != 0)
+		exit(write(1, "Error, wrong extension\n", 23));
+	fd = open(av[1], O_RDONLY);
+	if (fd <= 0)
+		exit(ft_putstr_fd("Erro na abertura do FD\n", 1));
+	main->map = save_map(NULL, fd);
+	map_rectangle(main);
+	map_validate(main);
+	map_caracteres(main);
+	map_paredes(main);
+	check_map_alg(main, copy_map(main));
+}
 
 int	map_caracteres_valids(char *s)
 {

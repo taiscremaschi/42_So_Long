@@ -6,11 +6,28 @@
 /*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 20:35:22 by ricardo           #+#    #+#             */
-/*   Updated: 2023/10/03 20:04:32 by ricardo          ###   ########.fr       */
+/*   Updated: 2023/10/04 20:14:11 by ricardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	check_map_alg(t_main *main, char **copy_map_temp)
+{
+	if (copy_map_temp == NULL)
+	{
+		free_map(main->map);
+		exit(ft_putstr_fd("erro", 1));
+	}
+	if (algoritmo(main->player.x, main->player.y, copy_map_temp,
+			main->player.col) == 1)
+	{
+		free_map(main->map);
+		free_map(copy_map_temp);
+		exit(ft_putstr_fd("caminho nao valido\n", 1));
+	}
+	free_map(copy_map_temp);
+}
 
 char	**copy_map(t_main *main)
 {
@@ -25,7 +42,7 @@ char	**copy_map(t_main *main)
 	while (x < main->altura)
 	{
 		y = 0;
-		c_map[x] = malloc(sizeof(char) * (main->large + 1));
+		c_map[x] = malloc(sizeof(char) * (ft_strlen(main->map[x]) + 1));
 		if (!c_map)
 			return (NULL);
 		while (main->map[x][y] != '\0')

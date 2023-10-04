@@ -6,7 +6,7 @@
 /*   By: ricardo <ricardo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 16:26:38 by ricardo           #+#    #+#             */
-/*   Updated: 2023/10/02 23:16:14 by ricardo          ###   ########.fr       */
+/*   Updated: 2023/10/04 19:47:26 by ricardo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,22 @@ void	image_inicialize(t_main *main)
 			&i, &i);
 }
 
+void	util_image(t_main *main, int x, int y)
+{
+	if (main->map[y][x] == '1')
+		mlx_put_image_to_window(main->mlx, main->win, main->picture.wall, (x
+				* 64), (y * 64));
+	else if (main->map[y][x] == 'P' || main->map[y][x] == '0')
+		mlx_put_image_to_window(main->mlx, main->win, main->picture.floor, (x
+				* 64), (y * 64));
+	else if (main->map[y][x] == 'E')
+		mlx_put_image_to_window(main->mlx, main->win, main->picture.exit, (x
+				* 64), (y * 64));
+	else if (main->map[y][x] == 'C')
+		mlx_put_image_to_window(main->mlx, main->win, main->picture.collectable,
+			(x * 64), (y * 64));
+}
+
 int	function_image(t_main *main)
 {
 	int	x;
@@ -39,18 +55,7 @@ int	function_image(t_main *main)
 		x = -1;
 		while (main->map[y][++x] != '\0')
 		{
-			if (main->map[y][x] == '1')
-				mlx_put_image_to_window(main->mlx, main->win,
-					main->picture.wall, (x * 64), (y * 64));
-			else if (main->map[y][x] == 'P' || main->map[y][x] == '0')
-				mlx_put_image_to_window(main->mlx, main->win,
-					main->picture.floor, (x * 64), (y * 64));
-			else if (main->map[y][x] == 'E')
-				mlx_put_image_to_window(main->mlx, main->win,
-					main->picture.exit, (x * 64), (y * 64));
-			else if (main->map[y][x] == 'C')
-				mlx_put_image_to_window(main->mlx, main->win,
-					main->picture.collectable, (x * 64), (y * 64));
+			util_image(main, x, y);
 		}
 	}
 	mlx_put_image_to_window(main->mlx, main->win, main->picture.player,
